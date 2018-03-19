@@ -19,7 +19,17 @@ function readyNow () {
             type: type,
         };
         console.log('object to send:', objectToSend);
-        //send object to server
+        //send object to server on AJAX
+        $.ajax({
+            type: 'POST',
+            url: '/doMath', 
+            data: objectToSend
+        }).done (function (response) {
+            console.log('back from POST with:', response);
+            getAnswer ();            
+        });//end AJAX
+
+
         //display answer on DOM 
         //
 
@@ -27,3 +37,15 @@ function readyNow () {
 
     }); //end #doMathButton on click
 }//END READY NOW 
+
+function getAnswer () {
+    $.ajax({
+        type: 'GET',
+        url: "/answer",
+    }).done(function (response){
+        console.log('back from GET with: ', response );
+        outputDiv = $('#answerOut') ;
+        outputDiv.empty();
+        outputDiv.append(response.answer); 
+    })
+}//end get answer
