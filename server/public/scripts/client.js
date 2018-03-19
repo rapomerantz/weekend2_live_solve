@@ -3,6 +3,7 @@ $(document).ready(readyNow);
 function readyNow () {
     $('#clearButton').on('click', function() {
         console.log('in clearButton on click');
+        
     });// end clearButton on click
     
     
@@ -28,12 +29,6 @@ function readyNow () {
             console.log('back from POST with:', response);
             getAnswer ();            
         });//end AJAX
-
-
-        //display answer on DOM 
-        //
-
-
 
     }); //end #doMathButton on click
 }//END READY NOW 
